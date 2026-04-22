@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeBoost AI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(160deg, #02176d 0%, #0a2fa0 60%, #1a4fd6 100%);
+            color: white;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 60px;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            margin-left: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 60px;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            max-width: 500px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            padding: 14px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #00ffcc;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #00ccaa;
+        }
+
+        .upload-box {
+            background: white;
+            color: black;
+            padding: 30px;
+            border-radius: 15px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .upload-box input {
+            margin-top: 15px;
+        }
+
+        .features {
+            padding: 60px;
+            background: white;
+            color: black;
+            text-align: center;
+        }
+
+        .features h2 {
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .feature-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 12px;
+            width: 250px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            background: #02176d;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">ResumeBoost AI</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Features</a>
+            <a href="#">Pricing</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Boost Your Resume Selection Chances 🚀</h1>
+            <p>Upload your resume and get instant AI-powered analysis, suggestions, and improvements to increase your
+                chances of getting selected.</p>
+            <button class="btn" onclick="scrollToUpload()">Analyze Resume</button>
+        </div>
+
+        <div class="upload-box" id="uploadSection">
+            <h3>Upload Resume</h3>
+            <input type="file" id="resumeInput" accept=".pdf,.doc,.docx">
+            <button class="btn" onclick="analyzeResume()" style="margin-top:15px;">Analyze</button>
+            <div class="result" id="result"></div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Why Choose ResumeBoost?</h2>
+        <div class="feature-grid">
+            <div class="card">
+                <h3>AI Analysis</h3>
+                <p>Deep scan of your resume with smart recommendations.</p>
+            </div>
+
+            <div class="card">
+                <h3>ATS Optimization</h3>
+                <p>Improve compatibility with ATS systems.</p>
+            </div>
+
+            <div class="card">
+                <h3>Keyword Suggestions</h3>
+                <p>Get job-specific keywords to increase selection chances.</p>
+            </div>
+
+            <div class="card">
+                <h3>Instant Score</h3>
+                <p>Get a resume score out of 100 instantly.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 ResumeBoost AI | Built for smarter hiring
+    </footer>
+
+    <script>
+        function scrollToUpload() {
+            document.getElementById("uploadSection").scrollIntoView({ behavior: "smooth" });
+        }
+
+        function analyzeResume() {
+            const fileInput = document.getElementById("resumeInput");
+            const result = document.getElementById("result");
+
+            if (!fileInput.files.length) {
+                result.innerText = "Please upload a resume first!";
+                result.style.color = "red";
+                return;
+            }
+
+            // Fake AI scoring logic (demo purpose)
+            let score = Math.floor(Math.random() * 40) + 60;
+
+            let feedback = "";
+
+            if (score > 85) {
+                feedback = "Excellent resume! You're ready to apply 🚀";
+            } else if (score > 70) {
+                feedback = "Good resume, but can be improved 👍";
+            } else {
+                feedback = "Needs improvement. Optimize keywords and formatting ⚠️";
+            }
+
+            result.style.color = "green";
+            result.innerHTML = `Score: ${score}/100 <br>${feedback}`;
+        }
+    </script>
+
+</body>
+
+</html>
